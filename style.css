@@ -52,13 +52,13 @@ summary::-webkit-details-marker {
 }
 
 details summary:after {
-    content: "↓";
+    content: " ↓ ";
     font-size: large;
     font-weight: normal;
 }
 
 details[open] summary:after {
-    content: "↑";
+    content: " ↑ ";
     font-size: large;
     font-weight: normal;
 }
