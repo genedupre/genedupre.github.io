@@ -1,0 +1,118 @@
+html * {
+    font-family: monospace !important;
+    font-size: medium !important;
+    max-width: 80ch;
+}
+
+div {
+    padding-left: 8ex;
+}
+
+div:not(:last-child)::after {
+    content: " \a\a";
+    white-space: pre;
+}
+
+img {
+    max-width: 100%;
+    max-height: auto;
+    object-fit: contain;
+}
+
+h1,
+h2 {
+    margin-bottom: 0px;
+}
+
+h1 {
+    margin-top: 2ex;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+h2 {
+    margin-top: 0pxu;
+}
+
+
+/* --flag styling. */
+
+summary {
+    font-weight: bold;
+    display: block;
+}
+
+summary:hover {
+    color: white;
+    background-color: black;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+details summary:after {
+    content: " â†´";
+    font-size: large;
+    font-weight: normal;
+}
+
+details[open] summary:after {
+    content: " â†°";
+    font-size: large;
+    font-weight: normal;
+}
+
+details:not(:last-child)::after {
+    content: " \a";
+    white-space: pre;
+}
+
+
+/* Link styling. */
+
+a {
+    font-weight: bold;
+    color: black;
+}
+
+a:visited {
+    color: dimgrey;
+}
+
+a:hover {
+    color: white;
+    background-color: black;
+}
+
+
+/* Header & footer styling. */
+
+header {
+    padding-bottom: 2ex;
+}
+
+footer {
+    padding-top: 2ex;
+}
+
+#header-left,
+#footer-left {
+    float: left;
+    width: 26ch;
+    text-align: left;
+}
+
+#header-center,
+#footer-center {
+    float: left;
+    width: 28ch;
+    text-align: center;
+}
+
+#header-right,
+#footer-right {
+    float: left;
+    width: 26ch;
+    text-align: right;
+}
