@@ -34,6 +34,17 @@ h2 {
     margin-top: 0pxu;
 }
 
+.identity {
+    display: flow-root;
+}
+
+.identity-portrait {
+    float: right;
+    width: 6rem;
+    height: 6rem;
+    margin: 0 0 0.75em 2ch;
+}
+
 .identity h2 {
     margin-top: 0;
     font-size: 1.5rem !important;
