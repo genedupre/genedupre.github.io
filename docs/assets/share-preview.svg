@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="630" viewBox="0 0 1200 630">
+  <title>Gene Dupré | Personal Manual</title>
+  <desc>Gene Dupré, Site Reliability Engineer in Berlin, with a framed portrait and a layout inspired by Unix manuals.</desc>
+  <rect width="1200" height="630" fill="#fff"/>
+  <g font-family="DejaVu Sans Mono, monospace" fill="#000">
+    <rect x="24" y="24" width="1152" height="582" fill="none" stroke="#000" stroke-width="2"/>
+    <g font-size="20">
+      <text x="64" y="79">GENEDUPRE(1)</text>
+      <text x="600" y="79" text-anchor="middle">Personal Manual</text>
+      <text x="1136" y="79" text-anchor="end">GENEDUPRE(1)</text>
+    </g>
+    <path d="M64 112H1136" fill="none" stroke="#000"/>
+    <text x="64" y="179" font-size="22" font-weight="bold">NAME</text>
+    <text x="112" y="264" font-size="64" font-weight="bold">Gene Dupré</text>
+    <text x="112" y="321" font-size="26">Site Reliability Engineer</text>
+    <text x="112" y="362" font-size="23">Berlin, Germany</text>
+    <g font-size="21" fill="#444">
+      <text x="112" y="433">A personal website, styled after</text>
+      <text x="112" y="467">a Linux manual.</text>
+    </g>
+    <rect x="842" y="185" width="252" height="252" fill="#fff" stroke="#000" stroke-width="2"/>
+    <image x="854" y="197" width="228" height="228" xlink:href="gene-dupre.jpg"/>
+    <rect x="858" y="172" width="104" height="25" fill="#fff"/>
+    <text x="869" y="191" font-size="20">AUTHOR</text>
+    <path d="M64 520H1136" fill="none" stroke="#000"/>
+    <text x="64" y="569" font-size="22">genedupre.com</text>
+    <text x="1136" y="569" text-anchor="end" font-size="20">Thanks for visiting.</text>
+  </g>
+</svg>
