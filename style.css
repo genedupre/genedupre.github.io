@@ -161,23 +161,36 @@ h2 {
     color: inherit;
     text-decoration: none;
     opacity: 0;
+    transition: opacity 200ms ease-out;
 }
 
 h1:hover .permalink,
 h2:hover .permalink,
 summary:hover .permalink,
+summary:focus-visible .permalink,
 .permalink:focus-visible {
     opacity: 1;
+    animation: permalink-pulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes permalink-pulse {
+    from {
+        filter: opacity(0.5);
+    }
+    to {
+        filter: opacity(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .permalink {
+        animation: none !important;
+        transition: none;
+    }
 }
 
 [id] {
     scroll-margin-top: 1rem;
-}
-
-@media (hover: none) {
-    .permalink {
-        opacity: 0.55;
-    }
 }
 
 .manual-option button {
