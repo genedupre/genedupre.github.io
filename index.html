@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Gene Dupré's personal manual. Site Reliability Engineer in Berlin, working with Linux and infrastructure automation." />
+    <script src="./manual.js"></script>
     <link rel="stylesheet" href="./style.css" />
     <title>Gene Dupré | Personal Manual</title>
 </head>
@@ -31,7 +33,10 @@
 
     <section>
         <h1>SYNOPSIS</h1>
-        <div><b>genedupre</b> [<a href="#work">--work</a>] [<a href="#homelab">--homelab</a>]</div>
+        <div><b>genedupre</b> [<a href="#work">--work</a>] [<a href="#homelab">--homelab</a>]<span id="manual-controls" hidden>
+            <span class="manual-option">[<button type="button" id="theme-toggle">--theme=light</button>]</span>
+            <span class="manual-option">[<button type="button" id="expand-toggle" aria-controls="work">--expand</button>]</span>
+        </span></div>
     </section>
 
     <section>

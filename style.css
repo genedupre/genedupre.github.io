@@ -1,11 +1,33 @@
-html * {
-    font-family: monospace !important;
-    font-size: medium !important;
+:root {
+    color-scheme: light;
+    --background: #fff;
+    --foreground: #000;
+    --visited: #696969;
+    --indent: 8ex;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --background: #111;
+    --foreground: #eee;
+    --visited: #b8b8b8;
+}
+
+html {
+    font-family: monospace;
+    font-size: medium;
+    color: var(--foreground);
+    background: var(--background);
+}
+
+body {
     max-width: 80ch;
+    margin: 0.5rem;
+    overflow-wrap: anywhere;
 }
 
 div {
-    padding-left: 8ex;
+    padding-left: var(--indent);
 }
 
 div:not(:last-child)::after {
@@ -15,12 +37,14 @@ div:not(:last-child)::after {
 
 img {
     max-width: 100%;
-    max-height: auto;
+    height: auto;
     object-fit: contain;
 }
 
 h1,
-h2 {
+h2,
+h3 {
+    font-size: 1rem;
     margin-bottom: 0px;
 }
 
@@ -31,7 +55,7 @@ h1 {
 }
 
 h2 {
-    margin-top: 0pxu;
+    margin-top: 0;
 }
 
 .identity {
@@ -52,8 +76,8 @@ h2 {
     top: -0.65em;
     left: 0.75ch;
     padding: 0 0.4ch;
-    background: Canvas;
-    font-size: 0.75rem !important;
+    background: var(--background);
+    font-size: 0.75rem;
     line-height: 1.2;
 }
 
@@ -65,7 +89,7 @@ h2 {
 
 .identity h2 {
     margin-top: 0;
-    font-size: 1.5rem !important;
+    font-size: 1.5rem;
     line-height: 1.25;
 }
 
@@ -75,7 +99,36 @@ h2 {
 
 .identity .manual-note {
     margin: 0.75em 0;
-    font-size: 0.875rem !important;
+    font-size: 0.875rem;
+}
+
+.manual-option {
+    white-space: nowrap;
+}
+
+.manual-option button {
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-weight: bold;
+    text-decoration: underline;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+}
+
+.manual-option button:hover,
+summary:hover,
+a:hover {
+    color: var(--background);
+    background-color: var(--foreground);
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
 }
 
 .thesis {
@@ -109,11 +162,7 @@ h2 {
 summary {
     font-weight: bold;
     display: block;
-}
-
-summary:hover {
-    color: white;
-    background-color: black;
+    cursor: pointer;
 }
 
 summary::-webkit-details-marker {
@@ -142,20 +191,26 @@ details:not(:last-child)::after {
 
 a {
     font-weight: bold;
-    color: black;
+    color: inherit;
 }
 
 a:visited {
-    color: dimgrey;
+    color: var(--visited);
 }
 
-a:hover {
-    color: white;
-    background-color: black;
+a:visited:hover {
+    color: var(--background);
 }
 
 
 /* Header & footer styling. */
+
+header,
+footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 1ch;
+}
 
 header {
     padding-bottom: 2ex;
@@ -167,21 +222,66 @@ footer {
 
 #header-left,
 #footer-left {
-    float: left;
-    width: 26ch;
     text-align: left;
 }
 
 #header-center,
 #footer-center {
-    float: left;
-    width: 28ch;
     text-align: center;
 }
 
 #header-right,
 #footer-right {
-    float: left;
-    width: 26ch;
     text-align: right;
+}
+
+@media (max-width: 40rem) {
+    :root {
+        --indent: 2ch;
+    }
+
+    body {
+        margin: 1rem;
+        line-height: 1.4;
+    }
+
+    header,
+    footer {
+        grid-template-columns: minmax(0, 1fr) auto;
+        font-size: 0.875rem;
+    }
+
+    #header-center,
+    #footer-center {
+        text-align: right;
+    }
+
+    #header-right,
+    #footer-right {
+        display: none;
+    }
+
+    .identity-portrait {
+        width: 4rem;
+        margin-left: 1ch;
+        padding: 0.375rem;
+    }
+
+    .identity .manual-note {
+        clear: both;
+        padding-top: 0.5em;
+    }
+
+    #work > details > div,
+    .thesis {
+        padding-inline-start: 1ch;
+    }
+
+    .manual-option button {
+        min-height: 2.75rem;
+    }
+
+    summary {
+        padding-block: 0.375rem;
+    }
 }
