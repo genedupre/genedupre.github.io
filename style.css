@@ -34,6 +34,18 @@ h2 {
     margin-top: 0pxu;
 }
 
+#languages > div::after {
+    content: none;
+}
+
+#languages h2 {
+    margin-top: 0;
+}
+
+#languages p {
+    margin: 0.25em 0 0.75em;
+}
+
 
 /* --flag styling. */
 
