@@ -49,6 +49,19 @@ h2 {
     font-size: 0.875rem !important;
 }
 
+.thesis {
+    margin: 0.75em 0 1.25em;
+    padding-inline-start: 3ch;
+}
+
+.thesis h3 {
+    margin: 0;
+}
+
+.thesis p {
+    margin: 0.5em 0 0;
+}
+
 #languages > div::after {
     content: none;
 }
