@@ -39,10 +39,28 @@ h2 {
 }
 
 .identity-portrait {
+    position: relative;
     float: right;
     width: 6rem;
-    height: 6rem;
-    margin: 0 0 0.75em 2ch;
+    margin: 0.5em 0 0.75em 2ch;
+    padding: 0.5rem;
+    border: 1px solid currentColor;
+}
+
+.identity-portrait figcaption {
+    position: absolute;
+    top: -0.65em;
+    left: 0.75ch;
+    padding: 0 0.4ch;
+    background: Canvas;
+    font-size: 0.75rem !important;
+    line-height: 1.2;
+}
+
+.identity-portrait img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 .identity h2 {
