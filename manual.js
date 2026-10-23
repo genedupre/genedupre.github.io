@@ -62,6 +62,28 @@
         });
         workEntries.forEach((entry) => entry.addEventListener("toggle", updateExpandButton));
 
+        let entriesBeforePrint = null;
+        window.addEventListener("beforeprint", () => {
+            if (entriesBeforePrint) {
+                return;
+            }
+            entriesBeforePrint = workEntries.map((entry) => entry.open);
+            workEntries.forEach((entry) => {
+                entry.open = true;
+            });
+            updateExpandButton();
+        });
+        window.addEventListener("afterprint", () => {
+            if (!entriesBeforePrint) {
+                return;
+            }
+            workEntries.forEach((entry, index) => {
+                entry.open = entriesBeforePrint[index];
+            });
+            entriesBeforePrint = null;
+            updateExpandButton();
+        });
+
         function openLinkedEntry() {
             let id;
             try {
