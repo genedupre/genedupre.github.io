@@ -146,6 +146,30 @@ h2 {
     white-space: nowrap;
 }
 
+.permalink,
+.permalink:visited {
+    color: inherit;
+    text-decoration: none;
+    opacity: 0;
+}
+
+h1:hover .permalink,
+h2:hover .permalink,
+summary:hover .permalink,
+.permalink:focus-visible {
+    opacity: 1;
+}
+
+[id] {
+    scroll-margin-top: 1rem;
+}
+
+@media (hover: none) {
+    .permalink {
+        opacity: 0.55;
+    }
+}
+
 .manual-option button {
     padding: 0;
     border: 0;

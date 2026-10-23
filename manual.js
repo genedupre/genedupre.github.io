@@ -61,6 +61,25 @@
             updateExpandButton();
         });
         workEntries.forEach((entry) => entry.addEventListener("toggle", updateExpandButton));
+
+        function openLinkedEntry() {
+            let id;
+            try {
+                id = decodeURIComponent(window.location.hash.slice(1));
+            } catch {
+                return;
+            }
+            const entry = workEntries.find((entry) => entry.id === id);
+            if (!entry) {
+                return;
+            }
+            entry.open = true;
+            updateExpandButton();
+            entry.scrollIntoView({ block: "start" });
+        }
+
+        window.addEventListener("hashchange", openLinkedEntry);
+        openLinkedEntry();
         updateExpandButton();
         controls.hidden = false;
     });
