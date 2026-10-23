@@ -34,6 +34,21 @@ h2 {
     margin-top: 0pxu;
 }
 
+.identity h2 {
+    margin-top: 0;
+    font-size: 1.5rem !important;
+    line-height: 1.25;
+}
+
+.identity p {
+    margin: 0.5em 0;
+}
+
+.identity .manual-note {
+    margin: 0.75em 0;
+    font-size: 0.875rem !important;
+}
+
 #languages > div::after {
     content: none;
 }
