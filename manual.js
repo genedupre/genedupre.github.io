@@ -26,6 +26,11 @@
     applyTheme(preferredTheme || "light");
 
     document.addEventListener("DOMContentLoaded", () => {
+        const controls = document.getElementById("manual-controls");
+        if (!controls) {
+            return;
+        }
+
         const themeButton = document.getElementById("theme-toggle");
         const expandButton = document.getElementById("expand-toggle");
         const workEntries = [...document.querySelectorAll("#work > details")];
@@ -57,6 +62,6 @@
         });
         workEntries.forEach((entry) => entry.addEventListener("toggle", updateExpandButton));
         updateExpandButton();
-        document.getElementById("manual-controls").hidden = false;
+        controls.hidden = false;
     });
 })();
