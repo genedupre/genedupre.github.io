@@ -16,66 +16,78 @@
     </header>
 
     <section>
-        <h1>name</h1>
-        <div>Dupre Gene</div>
+        <h1>NAME</h1>
+        <div><b>genedupre</b> - Gene Dupré, site reliability engineer</div>
     </section>
 
     <section>
         <h1>SYNOPSIS</h1>
-        <div><b>gene dupre</b> [<u>OPTION</u>]...</div>
+        <div><b>genedupre</b> [<a href="#work">--work</a>] [<a href="#homelab">--homelab</a>]</div>
     </section>
 
     <section>
         <h1>DESCRIPTION</h1>
-        <div>Currently, I work full-time at <a href="https://www.optimizely.com/">Optimizely</a>, as a Site Reliability Engineer where I ensure reliable and scalable systems.</div>
-        <div>Previously worked at <a href="https://inuits.be/">Inuits</a> in 2020 as a DevOps Engineer, where I worked with Ansible, Puppet, Nomad, Mender and other DEVOPS tools like Jenkins</div>
-        <div><a href="https://www.howest.be/nl/opleidingen/graduaat/systeem-en-netwerkbeheer">Associate Degree in Computer Networks</a>, 2019. </div>
-        <div><a href="https://www.howest.be/en/programmes/bachelor/multimedia-and-creative-technologies/iot-infrastructure-engineer">Bachelor Degree IoT Infrastructure Engineer</a>, 2021</div>
-		<div><a href="https://www.his.se/en/education/informatics/privacy-information-and-cybersecurity-masters-programme-iicma">Master's Degree Privacy, Information and Cyber Security</a>, 2024</div>
-
+        <div>I'm Gene Dupré, a Site Reliability Engineer based in Berlin. I work with Linux production infrastructure, automation, networking and virtualisation at <a href="https://www.optimizely.com/">Optimizely</a>.</div>
+        <div>Outside work, I run a Proxmox homelab to build, experiment and learn, with projects ranging from automated certificate renewal to application hosting and observability.</div>
     </section>
 
     <section>
         <h1>OPTIONS</h1>
 
-        <div>Here are some of my hobbies that I enjoy in my spare time.</div>
+        <div id="work">
+            <h2>--work</h2>
+            <p>My work spans Linux production infrastructure, automation, networking and virtualisation, with experience in both day-to-day operations and hands-on deployments.</p>
+
+            <details>
+                <summary>Optimizely | Site Reliability Engineer</summary>
+                <div>
+                    <p>August 2021 - present | Berlin, Germany</p>
+                    <p>I maintain and improve the stability, scalability and performance of production environments and services. I work with Linux-based infrastructure, using Puppet for configuration management, Jenkins for CI/CD and Proxmox for virtualisation. My work also covers VLAN-segmented networks and Fortinet FortiGate firewalls for routing and access controls.</p>
+                    <p>In 2026, I deployed and commissioned 25 Dell PowerEdge servers for production services, including PXE mappings and integration into the existing environment. I also carry out hardware maintenance, cabling and physical troubleshooting in the data centre.</p>
+                    <p>I also assess and remediate CVEs and take part in a full week of on-call duty every five weeks, responding to operational incidents outside regular working hours.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Inuits | DevOps Engineer</summary>
+                <div>
+                    <p>June 2019 - October 2020 | Ghent, Belgium</p>
+                    <p>I implemented and maintained embedded infrastructure for a customer, automating Linux configuration and deployments with Ansible and Puppet.</p>
+                    <p>I used Mender for secure remote software updates and the Elastic Stack for logging and analysis, working in an open-source environment with tools including Grafana and GitLab.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>The Last Mile | Intern</summary>
+                <div>
+                    <p>February 2019 - June 2019 | Dendermonde, Belgium</p>
+                    <p>I developed and deployed a FreePBX server on openSUSE for the Dendermonde police. I also contributed to VoIP projects and the design of secure IT infrastructure for local government.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Spinae | Intern</summary>
+                <div>
+                    <p>February 2021 - June 2021 | Lochristi, Belgium</p>
+                    <p>I evaluated identity provider solutions and deployed FreeIPA for centralised identity and policy management. I also deployed Confluence to support internal project documentation.</p>
+                </div>
+            </details>
+        </div>
+
+        <div id="homelab">
+            <h2>--homelab</h2>
+            <p>My homelab is where I put infrastructure ideas into practice while running services I use daily. Several Proxmox hosts provide the foundation, with all deployments and configuration managed through Ansible. I run an ELK stack, Telegraf and Grafana for logging and monitoring, alongside self-hosted applications, Home Assistant and a small Kubernetes setup. Early this year, I implemented certificate lifecycle automation with HashiCorp Vault. This replaced the long-lived static certificates I was using before and brought certificate management into my existing Ansible setup.</p>
+        </div>
+    </section>
+
+    <section id="history">
+        <h1>HISTORY</h1>
 
         <div>
-            <details>
-                <summary>--Motorcycle-Driving</summary>
-                <div>Motorcycle driving is a big passion of my and after many years of touring around Europe, I achieved a large amount of nice memories doing so.</div>
-                <div>In 2018 I drove from Belgium all the way to Tampere, Finland to visit a friend. and in 2019 drove all the way to Poland Warsaw, passing Berlin, Prague, Brno, Kraków and Lódź along the way.</div>
-		        <div>At some point in the future will I use my personal blog to write my experiences on driving very long distances with a motorcycle to help new drivers into this skill.</div>
-            </details>
-            
-            <details>
-               <summary>--books</summary>
-                <div>I love reading books, and I try to read when I have the time for it, my two most favorite books would be E.B Sledge With the old breed and Jordan B. Peterson 12 rules for life. You can visit my <a href="https://www.goodreads.com/user/show/76013865-gene">Goodreads</a> profile for more activity.</div>
-            </details>
-
-            <details>
-                <summary>--Powerlifting</summary>
-                <div>I started training when I was 16yrs, where I tried over the course of time different disciplines and diets. And ended up loving the Powerlifting discipline and its techniques the most.</div>
-            </details>
-
-            <details>
-                <summary>--food</summary>
-                <div>I have an absolute passion for cooking, and I find it very relaxing to be in the kitchen creating my favorite meals.</div>
-                <div>My favorite meal is homemade hamburgers; they are simply the best.</div>
-            </details>
-
-            <details>
-                <summary>--music</summary>
-                <div>I enjoy a wide range of music and put a lot of effort into maintaining a high-quality personal music library. My all-time favorite album is <em>Random Access Memories</em> by Daft Punk.</div>
-                <div><img src="docs/assets/DaftPunkRandomAccessMemories.jpg"></div>
-            </details>
-
-            <details>
-                <summary>--pets</summary>
-                <div>In the beginning of covid I got the pleasure of having Martin in my life, he is an King Charles Cavalier and as any cavalier dog is very kind, very active and mostly very affectionate.</div>
-		<div>Once the borders started going open again, did he leave for Guatemala to his permanent  owners where he will have the perfect dog life, running around with others dogs in a big garden and been a professional show dog.</div>
-                <div><img src="docs/assets/martin.png"></div> 
-            </details>
+            <h2>Education</h2>
+            <p>2024: <a href="https://www.his.se/en/education/informatics/privacy-information-and-cybersecurity-masters-programme-iicma">Master's Degree in Privacy, Information and Cyber Security</a>, University of Skövde.</p>
+            <p>2021: <a href="https://www.howest.be/en/programmes/bachelor/multimedia-and-creative-technologies">Bachelor's Degree in Infrastructure Engineering</a>, Howest.</p>
+            <p>2019: <a href="https://www.howest.be/nl/opleidingen/graduaat/systeem-en-netwerkbeheer">Associate Degree in Network Infrastructure</a>, Howest.</p>
         </div>
     </section>
 
@@ -100,8 +112,7 @@
         <div>
             I am also on
             <a href="https://github.com/genedupre">GitHub</a>,
-            <a href="https://app.pluralsight.com/profile/gene-dupre">Pluralsight</a>,
-            <a href="https://www.goodreads.com/user/show/76013865-gene">Goodreads</a>,
+            <a href="https://app.pluralsight.com/profile/gene-dupre">Pluralsight</a>.
         <!--<a href="https://genedupre.be">My Personal blog</a> (under construction),-->
 		<!--<a href="https://www.linkedin.com/in/genedupre">LinkedIn</a>. -->
         </div>
