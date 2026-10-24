@@ -1,15 +1,20 @@
 (() => {
     const root = document.documentElement;
     const storageKey = "genedupre-theme";
+    const layoutStorageKey = "genedupre-layout";
     let preferredTheme = null;
+    let preferredLayout = "narrow";
 
     try {
         const saved = window.localStorage.getItem(storageKey);
         if (saved === "light" || saved === "dark") {
             preferredTheme = saved;
         }
+        if (window.localStorage.getItem(layoutStorageKey) === "wide") {
+            preferredLayout = "wide";
+        }
     } catch {
-        // Theme switching still works when browser storage is unavailable.
+        // Controls still work when browser storage is unavailable.
     }
 
     function applyTheme(theme) {
@@ -23,7 +28,20 @@
         }
     }
 
+    function applyLayout(layout) {
+        root.dataset.layout = layout;
+        const button = document.getElementById("layout-toggle");
+        if (button) {
+            const wide = layout === "wide";
+            button.textContent = wide ? "--narrow" : "--wide";
+            button.setAttribute("aria-pressed", String(wide));
+            button.setAttribute("aria-label", `Switch to ${wide ? "narrow" : "wide"} layout`);
+            button.title = `Switch to ${wide ? "narrow" : "wide"} layout`;
+        }
+    }
+
     applyTheme(preferredTheme || "light");
+    applyLayout(preferredLayout);
 
     document.addEventListener("DOMContentLoaded", () => {
         const controls = document.getElementById("manual-controls");
@@ -33,9 +51,20 @@
 
         const themeButton = document.getElementById("theme-toggle");
         const expandButton = document.getElementById("expand-toggle");
+        const layoutButton = document.getElementById("layout-toggle");
         const workEntries = [...document.querySelectorAll("#work > details")];
 
         applyTheme(root.dataset.theme);
+        applyLayout(root.dataset.layout);
+        layoutButton.addEventListener("click", () => {
+            preferredLayout = root.dataset.layout === "wide" ? "narrow" : "wide";
+            applyLayout(preferredLayout);
+            try {
+                window.localStorage.setItem(layoutStorageKey, preferredLayout);
+            } catch {
+                // Keep the selected layout for this visit even without storage.
+            }
+        });
         themeButton.addEventListener("click", () => {
             preferredTheme = root.dataset.theme === "dark" ? "light" : "dark";
             applyTheme(preferredTheme);

@@ -56,127 +56,133 @@
         <div><b>genedupre</b> [<a href="#work">--work</a>] [<a href="#homelab">--homelab</a>]<span id="manual-controls" hidden>
             <span class="manual-option">[<button type="button" id="theme-toggle">--theme=light</button>]</span>
             <span class="manual-option">[<button type="button" id="expand-toggle" aria-controls="work">--expand</button>]</span>
+            <span class="manual-option wide-option">[<button type="button" id="layout-toggle" aria-pressed="false">--wide</button>]</span>
         </span></div>
     </section>
 
-    <section>
+    <section class="description">
         <h1>DESCRIPTION</h1>
         <div>I'm Gene, a Site Reliability Engineer at <a href="https://www.optimizely.com/">Optimizely</a> in Berlin. I work with Linux systems and help keep production services running.</div>
         <div>I enjoy automating repetitive work. Outside work, I run a homelab where I try things out and host services I use myself.</div>
     </section>
 
-    <section>
-        <h1>OPTIONS</h1>
+    <main class="manual-content">
+        <section>
+            <h1>OPTIONS</h1>
 
-        <div id="work">
-            <h2>--work <a class="permalink" href="#work" aria-label="Permalink to work" title="Permalink to work">#</a></h2>
-            <details id="optimizely" open>
-                <summary>Optimizely | Site Reliability Engineer <a class="permalink" href="#optimizely" aria-label="Permalink to Optimizely" title="Permalink to Optimizely">#</a></summary>
+            <div id="work">
+                <h2>--work <a class="permalink" href="#work" aria-label="Permalink to work" title="Permalink to work">#</a></h2>
+                <details id="optimizely" open>
+                    <summary>Optimizely | Site Reliability Engineer <a class="permalink" href="#optimizely" aria-label="Permalink to Optimizely" title="Permalink to Optimizely">#</a></summary>
+                    <div>
+                        <p>August 2021 - present | Berlin, Germany</p>
+                        <p>I help keep production services stable and work on their performance and capacity as they grow. I use Puppet for configuration management, Jenkins for CI/CD and Proxmox for virtualisation. I also work with VLANs and Fortinet FortiGate firewalls to manage routing and access between environments.</p>
+                        <p>In 2026, I set up 25 new Dell PowerEdge servers for production, including their PXE mappings and integration into the existing environment. I also work in the data centre, replacing hardware, cabling servers and troubleshooting problems.</p>
+                        <p>I review CVEs and patch affected systems. I'm also on call for a week every five weeks, handling incidents outside regular working hours.</p>
+                    </div>
+                </details>
+
+                <details id="inuits">
+                    <summary>Inuits | DevOps Engineer <a class="permalink" href="#inuits" aria-label="Permalink to Inuits" title="Permalink to Inuits">#</a></summary>
+                    <div>
+                        <p>June 2019 - October 2020 | Ghent, Belgium</p>
+                        <p>I worked on embedded infrastructure for a customer, using Ansible and Puppet to automate Linux configuration and deployments.</p>
+                        <p>I used Mender for remote device updates and the Elastic Stack for logs, alongside Grafana and GitLab.</p>
+                    </div>
+                </details>
+
+                <details id="the-last-mile">
+                    <summary>The Last Mile | Intern <a class="permalink" href="#the-last-mile" aria-label="Permalink to The Last Mile" title="Permalink to The Last Mile">#</a></summary>
+                    <div>
+                        <p>February 2019 - June 2019 | Dendermonde, Belgium</p>
+                        <p>I built and deployed a FreePBX server on openSUSE for the Dendermonde police. I also worked on other VoIP projects and helped design secure IT infrastructure for local government.</p>
+                    </div>
+                </details>
+
+                <details id="spinae">
+                    <summary>Spinae | Intern <a class="permalink" href="#spinae" aria-label="Permalink to Spinae" title="Permalink to Spinae">#</a></summary>
+                    <div>
+                        <p>February 2021 - June 2021 | Lochristi, Belgium</p>
+                        <p>I compared identity provider options and deployed FreeIPA to manage user identities and policies centrally. I also set up Confluence for internal documentation.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div id="homelab">
+                <h2>--homelab <a class="permalink" href="#homelab" aria-label="Permalink to homelab" title="Permalink to homelab">#</a></h2>
+                <p>I run several Proxmox hosts for my personal services. I use Terraform to deploy LXC containers and virtual machines on the cluster, and Ansible to deploy and configure the services. An ELK stack, Telegraf and Grafana handle logs and monitoring. I also run Home Assistant and a small Kubernetes setup. Early this year, I implemented certificate lifecycle automation with HashiCorp Vault. This replaced the long-lived static certificates I was using before and brought certificate management into my existing Ansible setup.</p>
+            </div>
+        </section>
+
+        <div class="manual-reference">
+            <section id="history">
+                <h1>HISTORY <a class="permalink" href="#history" aria-label="Permalink to education" title="Permalink to education">#</a></h1>
+
                 <div>
-                    <p>August 2021 - present | Berlin, Germany</p>
-                    <p>I help keep production services stable and work on their performance and capacity as they grow. I use Puppet for configuration management, Jenkins for CI/CD and Proxmox for virtualisation. I also work with VLANs and Fortinet FortiGate firewalls to manage routing and access between environments.</p>
-                    <p>In 2026, I set up 25 new Dell PowerEdge servers for production, including their PXE mappings and integration into the existing environment. I also work in the data centre, replacing hardware, cabling servers and troubleshooting problems.</p>
-                    <p>I review CVEs and patch affected systems. I'm also on call for a week every five weeks, handling incidents outside regular working hours.</p>
+                    <h2>Education</h2>
+                    <p>2024: <a href="https://www.his.se/en/education/informatics/privacy-information-and-cybersecurity-masters-programme-iicma">Master's Degree in Privacy, Information and Cyber Security</a>, University of Skövde.</p>
+                    <section class="thesis" aria-labelledby="thesis-heading">
+                        <h3 id="thesis-heading">Master's thesis</h3>
+                        <p><a href="https://his.diva-portal.org/smash/record.jsf?pid=diva2%3A1880029">Energy efficiency in AES encryption on ARM Cortex CPUs</a></p>
+                        <p>For my master's thesis, I studied how encryption choices affect energy use on ARM processors. I compared different AES encryption modes, key lengths and data sizes.</p>
+                    </section>
+                    <p>2021: <a href="https://www.howest.be/en/programmes/bachelor/multimedia-and-creative-technologies">Bachelor's Degree in Infrastructure Engineering</a>, Howest.</p>
+                    <section class="thesis" aria-labelledby="bachelor-thesis-heading">
+                        <h3 id="bachelor-thesis-heading">Bachelor's thesis</h3>
+                        <p>Using HashiCorp Nomad as an alternative to Kubernetes</p>
+                        <p>I built a Nomad test environment and explored how it compared with Kubernetes, including deployment through GitLab CI/CD and integration with HashiCorp Vault.</p>
+                    </section>
+                    <p>2019: <a href="https://www.howest.be/nl/opleidingen/graduaat/systeem-en-netwerkbeheer">Associate Degree in Network Infrastructure</a>, Howest.</p>
                 </div>
-            </details>
-
-            <details id="inuits">
-                <summary>Inuits | DevOps Engineer <a class="permalink" href="#inuits" aria-label="Permalink to Inuits" title="Permalink to Inuits">#</a></summary>
-                <div>
-                    <p>June 2019 - October 2020 | Ghent, Belgium</p>
-                    <p>I worked on embedded infrastructure for a customer, using Ansible and Puppet to automate Linux configuration and deployments.</p>
-                    <p>I used Mender for remote device updates and the Elastic Stack for logs, alongside Grafana and GitLab.</p>
-                </div>
-            </details>
-
-            <details id="the-last-mile">
-                <summary>The Last Mile | Intern <a class="permalink" href="#the-last-mile" aria-label="Permalink to The Last Mile" title="Permalink to The Last Mile">#</a></summary>
-                <div>
-                    <p>February 2019 - June 2019 | Dendermonde, Belgium</p>
-                    <p>I built and deployed a FreePBX server on openSUSE for the Dendermonde police. I also worked on other VoIP projects and helped design secure IT infrastructure for local government.</p>
-                </div>
-            </details>
-
-            <details id="spinae">
-                <summary>Spinae | Intern <a class="permalink" href="#spinae" aria-label="Permalink to Spinae" title="Permalink to Spinae">#</a></summary>
-                <div>
-                    <p>February 2021 - June 2021 | Lochristi, Belgium</p>
-                    <p>I compared identity provider options and deployed FreeIPA to manage user identities and policies centrally. I also set up Confluence for internal documentation.</p>
-                </div>
-            </details>
-        </div>
-
-        <div id="homelab">
-            <h2>--homelab <a class="permalink" href="#homelab" aria-label="Permalink to homelab" title="Permalink to homelab">#</a></h2>
-            <p>I run several Proxmox hosts for my personal services. I use Terraform to deploy LXC containers and virtual machines on the cluster, and Ansible to deploy and configure the services. An ELK stack, Telegraf and Grafana handle logs and monitoring. I also run Home Assistant and a small Kubernetes setup. Early this year, I implemented certificate lifecycle automation with HashiCorp Vault. This replaced the long-lived static certificates I was using before and brought certificate management into my existing Ansible setup.</p>
-        </div>
-    </section>
-
-    <section id="history">
-        <h1>HISTORY <a class="permalink" href="#history" aria-label="Permalink to education" title="Permalink to education">#</a></h1>
-
-        <div>
-            <h2>Education</h2>
-            <p>2024: <a href="https://www.his.se/en/education/informatics/privacy-information-and-cybersecurity-masters-programme-iicma">Master's Degree in Privacy, Information and Cyber Security</a>, University of Skövde.</p>
-            <section class="thesis" aria-labelledby="thesis-heading">
-                <h3 id="thesis-heading">Master's thesis</h3>
-                <p><a href="https://his.diva-portal.org/smash/record.jsf?pid=diva2%3A1880029">Energy efficiency in AES encryption on ARM Cortex CPUs</a></p>
-                <p>For my master's thesis, I studied how encryption choices affect energy use on ARM processors. I compared different AES encryption modes, key lengths and data sizes.</p>
             </section>
-            <p>2021: <a href="https://www.howest.be/en/programmes/bachelor/multimedia-and-creative-technologies">Bachelor's Degree in Infrastructure Engineering</a>, Howest.</p>
-            <section class="thesis" aria-labelledby="bachelor-thesis-heading">
-                <h3 id="bachelor-thesis-heading">Bachelor's thesis</h3>
-                <p>Using HashiCorp Nomad as an alternative to Kubernetes</p>
-                <p>I built a Nomad test environment and explored how it compared with Kubernetes, including deployment through GitLab CI/CD and integration with HashiCorp Vault.</p>
+
+            <section id="languages">
+                <h1>LANGUAGES <a class="permalink" href="#languages" aria-label="Permalink to languages" title="Permalink to languages">#</a></h1>
+
+                <div>
+                    <h2>Dutch/Flemish</h2>
+                    <p>Native.</p>
+                </div>
+
+                <div>
+                    <h2>English</h2>
+                    <p>Professionally fluent.<br>IELTS overall band score: 7.5 (very good).</p>
+                </div>
+
+                <div>
+                    <h2>German</h2>
+                    <p>A2, currently learning.</p>
+                </div>
             </section>
-            <p>2019: <a href="https://www.howest.be/nl/opleidingen/graduaat/systeem-en-netwerkbeheer">Associate Degree in Network Infrastructure</a>, Howest.</p>
+
+            <section id="cv">
+                <h1>FILES <a class="permalink" href="#cv" aria-label="Permalink to CV" title="Permalink to CV">#</a></h1>
+                <div>
+                    <h2><a href="./docs/assets/Gene_Dupre_CV.pdf">resume.pdf</a> <span style="font-weight: normal;">[October 2026]</span></h2>
+                </div>
+            </section>
+
+            <section>
+                <h1>AUTHOR</h1>
+
+                <div>
+                    You can reach me on <a href="https://www.linkedin.com/in/genedupre/">LinkedIn</a>.
+                </div>
+            </section>
+
+            <section>
+                <h1>SEE ALSO</h1>
+                <div>
+                    I am also on
+                    <a href="https://github.com/genedupre">GitHub</a>,
+                    <a href="https://app.pluralsight.com/profile/gene-dupre">Pluralsight</a>.
+                    <!--<a href="https://genedupre.be">My Personal blog</a> (under construction),-->
+                    <!--<a href="https://www.linkedin.com/in/genedupre">LinkedIn</a>. -->
+                </div>
+            </section>
+
         </div>
-    </section>
-
-    <section id="languages">
-        <h1>LANGUAGES <a class="permalink" href="#languages" aria-label="Permalink to languages" title="Permalink to languages">#</a></h1>
-
-        <div>
-            <h2>Dutch/Flemish</h2>
-            <p>Native.</p>
-        </div>
-
-        <div>
-            <h2>English</h2>
-            <p>Professionally fluent.<br>IELTS overall band score: 7.5 (very good).</p>
-        </div>
-
-        <div>
-            <h2>German</h2>
-            <p>A2, currently learning.</p>
-        </div>
-    </section>
-
-    <section id="cv">
-        <h1>FILES <a class="permalink" href="#cv" aria-label="Permalink to CV" title="Permalink to CV">#</a></h1>
-        <div>
-            <h2><a href="./docs/assets/Gene_Dupre_CV.pdf">resume.pdf</a> <span style="font-weight: normal;">[October 2026]</span></h2>
-        </div>
-    </section>
-
-    <section>
-        <h1>AUTHOR</h1>
-
-        <div>
-            You can reach me on <a href="https://www.linkedin.com/in/genedupre/">LinkedIn</a>.
-        </div>
-    </section>
-
-    <section>
-        <h1>SEE ALSO</h1>
-        <div>
-            I am also on
-            <a href="https://github.com/genedupre">GitHub</a>,
-            <a href="https://app.pluralsight.com/profile/gene-dupre">Pluralsight</a>.
-        <!--<a href="https://genedupre.be">My Personal blog</a> (under construction),-->
-		<!--<a href="https://www.linkedin.com/in/genedupre">LinkedIn</a>. -->
-        </div>
-    </section>
+    </main>
 
     <footer>
         <span id="footer-left">GENEDUPRE(1)</span>

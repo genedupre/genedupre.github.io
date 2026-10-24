@@ -30,6 +30,36 @@ body {
     display: none;
 }
 
+.manual-reference {
+    padding-left: 0;
+}
+
+.wide-option {
+    display: none;
+}
+
+@media screen and (min-width: 75rem) {
+    .wide-option {
+        display: inline;
+    }
+
+    :root[data-layout="wide"] body:not(.error-page) {
+        max-width: min(160ch, calc(100% - 3rem));
+        margin: 1.5rem auto;
+    }
+
+    :root[data-layout="wide"] .manual-content {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 4ch;
+        align-items: start;
+    }
+
+    :root[data-layout="wide"] .description {
+        max-width: 80ch;
+    }
+}
+
 a,
 .manual-option button {
     text-underline-offset: 0.2em;
