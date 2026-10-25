@@ -4,6 +4,11 @@
     --foreground: #000;
     --visited: #696969;
     --indent: 8ex;
+    --theme-duration: 0s;
+}
+
+:root.theme-changing {
+    --theme-duration: 200ms;
 }
 
 :root[data-theme="dark"] {
@@ -18,6 +23,15 @@ html {
     font-size: medium;
     color: var(--foreground);
     background: var(--background);
+    transition: color var(--theme-duration) ease, background-color var(--theme-duration) ease;
+}
+
+a:not(.permalink),
+.manual-option button,
+.identity-portrait figcaption,
+.error-status figcaption,
+.portrait-close {
+    transition: color var(--theme-duration) ease, background-color var(--theme-duration) ease;
 }
 
 body {
@@ -149,7 +163,8 @@ html.portrait-open {
     background: var(--background);
     opacity: 0;
     transform: translateY(100vh);
-    transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1), opacity 300ms ease;
+    transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1), opacity 300ms ease,
+        color var(--theme-duration) ease, background-color var(--theme-duration) ease;
 }
 
 .portrait-dialog.is-visible {
@@ -288,6 +303,10 @@ summary:focus-visible .permalink,
 }
 
 @media (prefers-reduced-motion: reduce) {
+    :root.theme-changing {
+        --theme-duration: 0s;
+    }
+
     .permalink {
         animation: none !important;
         transition: none;
@@ -537,12 +556,14 @@ footer {
 
 @media print {
     :root,
-    :root[data-theme="dark"] {
+    :root[data-theme="dark"],
+    :root.theme-changing {
         color-scheme: light;
         --background: #fff;
         --foreground: #000;
         --visited: #000;
         --indent: 4ch;
+        --theme-duration: 0s;
     }
 
     html {
@@ -611,6 +632,12 @@ footer {
     summary:hover {
         color: #000;
         background: transparent;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+        outline: none;
     }
 
     h1,

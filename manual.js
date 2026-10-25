@@ -117,6 +117,9 @@
         const expandButton = document.getElementById("expand-toggle");
         const layoutButton = document.getElementById("layout-toggle");
         const workEntries = [...document.querySelectorAll("#work > details")];
+        const entryAnimations = new Map();
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let themeTransitionTimer;
 
         applyTheme(root.dataset.theme);
         applyLayout(root.dataset.layout);
@@ -130,8 +133,13 @@
             }
         });
         themeButton.addEventListener("click", () => {
+            window.clearTimeout(themeTransitionTimer);
+            root.classList.add("theme-changing");
             preferredTheme = root.dataset.theme === "dark" ? "light" : "dark";
             applyTheme(preferredTheme);
+            themeTransitionTimer = window.setTimeout(() => {
+                root.classList.remove("theme-changing");
+            }, 250);
             try {
                 window.localStorage.setItem(storageKey, preferredTheme);
             } catch {
@@ -139,30 +147,91 @@
             }
         });
 
+        function isEntryOpen(entry) {
+            return entryAnimations.get(entry)?.expanded ?? entry.open;
+        }
+
+        function setEntryOpen(entry, expanded, animate = true) {
+            const previous = entryAnimations.get(entry);
+            if (!previous && entry.open === expanded) {
+                return;
+            }
+
+            const content = entry.querySelector("div");
+            const startHeight = entry.getBoundingClientRect().height;
+            const startOpacity = entry.open ? Number(window.getComputedStyle(content).opacity) : 0;
+            if (previous) {
+                entryAnimations.delete(entry);
+                previous.height.cancel();
+                previous.opacity.cancel();
+            }
+            entry.style.overflow = "";
+            entry.open = expanded;
+            if (!animate || reducedMotion.matches || typeof entry.animate !== "function") {
+                updateExpandButton();
+                return;
+            }
+
+            const endHeight = entry.getBoundingClientRect().height;
+            entry.open = true;
+            entry.style.overflow = "clip";
+            const height = entry.animate([
+                { height: `${startHeight}px` },
+                { height: `${endHeight}px` }
+            ], { duration: 220, easing: "ease-in-out", fill: "both" });
+            const opacity = content.animate([
+                { opacity: startOpacity },
+                { opacity: expanded ? 1 : 0 }
+            ], { duration: 180, easing: "ease-in-out", fill: "both" });
+            const transition = { height, opacity, expanded };
+            entryAnimations.set(entry, transition);
+            height.onfinish = () => {
+                if (entryAnimations.get(entry) !== transition) {
+                    return;
+                }
+                entry.open = expanded;
+                entryAnimations.delete(entry);
+                height.cancel();
+                opacity.cancel();
+                entry.style.overflow = "";
+                updateExpandButton();
+            };
+            updateExpandButton();
+        }
+
         function updateExpandButton() {
-            const allOpen = workEntries.every((entry) => entry.open);
+            const allOpen = workEntries.every(isEntryOpen);
             expandButton.textContent = allOpen ? "--collapse" : "--expand";
             expandButton.setAttribute("aria-expanded", String(allOpen));
             expandButton.setAttribute("aria-label", `${allOpen ? "Collapse" : "Expand"} all work entries`);
         }
 
         expandButton.addEventListener("click", () => {
-            const open = !workEntries.every((entry) => entry.open);
+            const open = !workEntries.every(isEntryOpen);
             workEntries.forEach((entry) => {
-                entry.open = open;
+                setEntryOpen(entry, open);
             });
             updateExpandButton();
         });
-        workEntries.forEach((entry) => entry.addEventListener("toggle", updateExpandButton));
+        workEntries.forEach((entry) => {
+            entry.addEventListener("toggle", updateExpandButton);
+            entry.querySelector("summary").addEventListener("click", (event) => {
+                if (event.target.closest("a")) {
+                    return;
+                }
+                event.preventDefault();
+                setEntryOpen(entry, !isEntryOpen(entry));
+            });
+        });
 
         let entriesBeforePrint = null;
         window.addEventListener("beforeprint", () => {
             if (entriesBeforePrint) {
                 return;
             }
-            entriesBeforePrint = workEntries.map((entry) => entry.open);
+            entriesBeforePrint = workEntries.map(isEntryOpen);
             workEntries.forEach((entry) => {
-                entry.open = true;
+                setEntryOpen(entry, true, false);
             });
             updateExpandButton();
         });
@@ -171,7 +240,7 @@
                 return;
             }
             workEntries.forEach((entry, index) => {
-                entry.open = entriesBeforePrint[index];
+                setEntryOpen(entry, entriesBeforePrint[index], false);
             });
             entriesBeforePrint = null;
             updateExpandButton();
@@ -188,7 +257,7 @@
             if (!entry) {
                 return;
             }
-            entry.open = true;
+            setEntryOpen(entry, true, false);
             updateExpandButton();
             entry.scrollIntoView({ block: "start" });
         }
