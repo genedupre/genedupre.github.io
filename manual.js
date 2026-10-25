@@ -47,10 +47,42 @@
         const portraitLink = document.getElementById("portrait-open");
         const portraitDialog = document.getElementById("portrait-dialog");
         if (portraitLink && portraitDialog && typeof portraitDialog.showModal === "function") {
+            let closingPortrait = null;
+
+            function closePortrait() {
+                if (!portraitDialog.open || closingPortrait) {
+                    return;
+                }
+                const request = {};
+                closingPortrait = request;
+                portraitDialog.classList.remove("is-visible");
+                const transitions = portraitDialog.getAnimations({ subtree: true });
+                Promise.allSettled(transitions.map((animation) => animation.finished)).then(() => {
+                    if (closingPortrait === request) {
+                        portraitDialog.close();
+                    }
+                });
+            }
+
             portraitLink.addEventListener("click", (event) => {
                 event.preventDefault();
-                portraitDialog.showModal();
+                if (portraitDialog.open) {
+                    return;
+                }
+                closingPortrait = null;
                 root.classList.add("portrait-open");
+                portraitDialog.showModal();
+                // Resolve the starting position before transitioning into view.
+                portraitDialog.getBoundingClientRect();
+                portraitDialog.classList.add("is-visible");
+            });
+            portraitDialog.addEventListener("cancel", (event) => {
+                event.preventDefault();
+                closePortrait();
+            });
+            portraitDialog.querySelector("form").addEventListener("submit", (event) => {
+                event.preventDefault();
+                closePortrait();
             });
             portraitDialog.addEventListener("click", (event) => {
                 if (event.target !== portraitDialog) {
@@ -59,13 +91,21 @@
                 const bounds = portraitDialog.getBoundingClientRect();
                 if (event.clientX < bounds.left || event.clientX > bounds.right ||
                     event.clientY < bounds.top || event.clientY > bounds.bottom) {
-                    portraitDialog.close();
+                    closePortrait();
                 }
             });
             portraitDialog.addEventListener("close", () => {
+                if (portraitDialog.open) {
+                    return;
+                }
+                closingPortrait = null;
+                portraitDialog.classList.remove("is-visible");
                 root.classList.remove("portrait-open");
             });
-            window.addEventListener("beforeprint", () => portraitDialog.close());
+            window.addEventListener("beforeprint", () => {
+                portraitDialog.close();
+                root.classList.remove("portrait-open");
+            });
         }
 
         const controls = document.getElementById("manual-controls");
