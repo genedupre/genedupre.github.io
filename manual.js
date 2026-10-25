@@ -265,6 +265,76 @@
         window.addEventListener("hashchange", openLinkedEntry);
         openLinkedEntry();
         updateExpandButton();
+
+        if (typeof navigator.clipboard?.writeText === "function") {
+            const copyStatus = document.createElement("span");
+            copyStatus.className = "copy-status";
+            copyStatus.setAttribute("role", "status");
+            copyStatus.setAttribute("aria-live", "polite");
+            copyStatus.setAttribute("aria-atomic", "true");
+            document.body.append(copyStatus);
+
+            function clearCopyFeedback(link) {
+                delete link.dataset.copyFeedback;
+                delete link.dataset.copyPlacement;
+                delete link.dataset.copySide;
+            }
+
+            window.addEventListener("resize", () => {
+                document.querySelectorAll(".permalink[data-copy-feedback]").forEach(clearCopyFeedback);
+            });
+
+            document.querySelectorAll(".permalink").forEach((link) => {
+                const label = (link.getAttribute("aria-label") || "section").replace(/^Permalink to /, "");
+                link.setAttribute("aria-label", `Copy link to ${label}`);
+                link.title = `Copy link to ${label}`;
+                let feedbackTimer;
+                let copyAttempt = 0;
+
+                link.addEventListener("click", async (event) => {
+                    if (event.defaultPrevented || event.button !== 0 ||
+                        event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+                        return;
+                    }
+
+                    if (window.location.hash === link.hash) {
+                        openLinkedEntry();
+                    }
+                    const url = new URL(link.href);
+                    url.search = "";
+                    const attempt = ++copyAttempt;
+                    let copied = false;
+                    try {
+                        await navigator.clipboard.writeText(url.href);
+                        copied = true;
+                    } catch {
+                        // The anchor still navigates normally if clipboard access is denied.
+                    }
+                    if (attempt !== copyAttempt) {
+                        return;
+                    }
+
+                    window.clearTimeout(feedbackTimer);
+                    link.dataset.copyFeedback = copied ? "[copied]" : "[copy failed]";
+                    link.dataset.copyPlacement = "inline";
+                    const bounds = link.getBoundingClientRect();
+                    const heading = link.closest(".work-position, h1, h2");
+                    const feedbackStyle = window.getComputedStyle(link, "::after");
+                    const feedbackWidth = ["width", "paddingLeft", "paddingRight", "borderLeftWidth", "borderRightWidth"]
+                        .reduce((width, property) => width + Number.parseFloat(feedbackStyle[property]), 0);
+                    const rightEdge = Math.min(heading?.getBoundingClientRect().right ?? window.innerWidth, window.innerWidth - 8);
+                    const gap = Number.parseFloat(window.getComputedStyle(link).fontSize) / 2;
+                    if (bounds.right + gap + feedbackWidth > rightEdge) {
+                        link.dataset.copyPlacement = "below";
+                    }
+                    link.dataset.copySide = bounds.left < window.innerWidth / 2 ? "start" : "end";
+                    copyStatus.textContent = copied ? `Link to ${label} copied.` :
+                        "Copy failed. You can copy the link from the address bar.";
+                    feedbackTimer = window.setTimeout(() => clearCopyFeedback(link), copied ? 1500 : 2500);
+                });
+            });
+        }
+
         controls.hidden = false;
     });
 })();
