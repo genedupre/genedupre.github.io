@@ -41,7 +41,9 @@
         <div class="identity">
             <figure class="identity-portrait">
                 <figcaption>AUTHOR</figcaption>
-                <img src="./docs/assets/gene-dupre.jpg" alt="Portrait of Gene Dupré" width="96" height="96">
+                <a id="portrait-open" class="portrait-link" href="./docs/assets/gene-dupre.jpg" aria-label="View larger portrait of Gene Dupré" aria-haspopup="dialog" aria-controls="portrait-dialog">
+                    <img src="./docs/assets/gene-dupre.jpg" alt="Portrait of Gene Dupré" width="96" height="96">
+                </a>
             </figure>
             <h2>Gene Dupré</h2>
             <p>Site Reliability Engineer · Berlin</p>
@@ -73,7 +75,10 @@
             <div id="work">
                 <h2>--work <a class="permalink" href="#work" aria-label="Permalink to work" title="Permalink to work">#</a></h2>
                 <details id="optimizely" open>
-                    <summary>Optimizely | Site Reliability Engineer <a class="permalink" href="#optimizely" aria-label="Permalink to Optimizely" title="Permalink to Optimizely">#</a></summary>
+                    <summary>
+                        <span class="work-position">Optimizely | Site Reliability Engineer <a class="permalink" href="#optimizely" aria-label="Permalink to Optimizely" title="Permalink to Optimizely">#</a></span>
+                        <span class="work-period"><time datetime="2021-08">2021</time> - present</span>
+                    </summary>
                     <div>
                         <p>August 2021 - present | Berlin, Germany</p>
                         <p>I help keep production services stable and work on their performance and capacity as they grow. I use Puppet for configuration management, Jenkins for CI/CD and Proxmox for virtualisation. I also work with VLANs and Fortinet FortiGate firewalls to manage routing and access between environments.</p>
@@ -82,8 +87,22 @@
                     </div>
                 </details>
 
+                <details id="spinae">
+                    <summary>
+                        <span class="work-position">Spinae | Intern <a class="permalink" href="#spinae" aria-label="Permalink to Spinae" title="Permalink to Spinae">#</a></span>
+                        <span class="work-period"><time datetime="2021-02">2021</time></span>
+                    </summary>
+                    <div>
+                        <p>February 2021 - June 2021 | Lochristi, Belgium</p>
+                        <p>I compared identity provider options and deployed FreeIPA to manage user identities and policies centrally. I also set up Confluence for internal documentation.</p>
+                    </div>
+                </details>
+
                 <details id="inuits">
-                    <summary>Inuits | DevOps Engineer <a class="permalink" href="#inuits" aria-label="Permalink to Inuits" title="Permalink to Inuits">#</a></summary>
+                    <summary>
+                        <span class="work-position">Inuits | DevOps Engineer <a class="permalink" href="#inuits" aria-label="Permalink to Inuits" title="Permalink to Inuits">#</a></span>
+                        <span class="work-period"><time datetime="2019-06">2019</time> - <time datetime="2020-10">2020</time></span>
+                    </summary>
                     <div>
                         <p>June 2019 - October 2020 | Ghent, Belgium</p>
                         <p>I worked on embedded infrastructure for a customer, using Ansible and Puppet to automate Linux configuration and deployments.</p>
@@ -92,18 +111,13 @@
                 </details>
 
                 <details id="the-last-mile">
-                    <summary>The Last Mile | Intern <a class="permalink" href="#the-last-mile" aria-label="Permalink to The Last Mile" title="Permalink to The Last Mile">#</a></summary>
+                    <summary>
+                        <span class="work-position">The Last Mile | Intern <a class="permalink" href="#the-last-mile" aria-label="Permalink to The Last Mile" title="Permalink to The Last Mile">#</a></span>
+                        <span class="work-period"><time datetime="2019-02">2019</time></span>
+                    </summary>
                     <div>
                         <p>February 2019 - June 2019 | Dendermonde, Belgium</p>
                         <p>I built and deployed a FreePBX server on openSUSE for the Dendermonde police. I also worked on other VoIP projects and helped design secure IT infrastructure for local government.</p>
-                    </div>
-                </details>
-
-                <details id="spinae">
-                    <summary>Spinae | Intern <a class="permalink" href="#spinae" aria-label="Permalink to Spinae" title="Permalink to Spinae">#</a></summary>
-                    <div>
-                        <p>February 2021 - June 2021 | Lochristi, Belgium</p>
-                        <p>I compared identity provider options and deployed FreeIPA to manage user identities and policies centrally. I also set up Confluence for internal documentation.</p>
                     </div>
                 </details>
             </div>
@@ -183,6 +197,14 @@
 
         </div>
     </main>
+
+    <dialog id="portrait-dialog" class="portrait-dialog" aria-label="Portrait of Gene Dupré">
+        <form method="dialog" class="portrait-toolbar">
+            <h2>AUTHOR</h2>
+            <span>[<button type="submit" class="portrait-close" aria-label="Close portrait" autofocus>close</button>]</span>
+        </form>
+        <img src="./docs/assets/gene-dupre.jpg" alt="Portrait of Gene Dupré" width="372" height="372">
+    </dialog>
 
     <footer>
         <span id="footer-left">GENEDUPRE(1)</span>

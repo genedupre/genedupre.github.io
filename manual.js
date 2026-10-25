@@ -44,6 +44,30 @@
     applyLayout(preferredLayout);
 
     document.addEventListener("DOMContentLoaded", () => {
+        const portraitLink = document.getElementById("portrait-open");
+        const portraitDialog = document.getElementById("portrait-dialog");
+        if (portraitLink && portraitDialog && typeof portraitDialog.showModal === "function") {
+            portraitLink.addEventListener("click", (event) => {
+                event.preventDefault();
+                portraitDialog.showModal();
+                root.classList.add("portrait-open");
+            });
+            portraitDialog.addEventListener("click", (event) => {
+                if (event.target !== portraitDialog) {
+                    return;
+                }
+                const bounds = portraitDialog.getBoundingClientRect();
+                if (event.clientX < bounds.left || event.clientX > bounds.right ||
+                    event.clientY < bounds.top || event.clientY > bounds.bottom) {
+                    portraitDialog.close();
+                }
+            });
+            portraitDialog.addEventListener("close", () => {
+                root.classList.remove("portrait-open");
+            });
+            window.addEventListener("beforeprint", () => portraitDialog.close());
+        }
+
         const controls = document.getElementById("manual-controls");
         if (!controls) {
             return;
