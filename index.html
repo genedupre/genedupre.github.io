@@ -55,7 +55,7 @@
 
     <section class="synopsis">
         <h1>SYNOPSIS</h1>
-        <div><b>genedupre</b> [<a href="#work">--work</a>] [<a href="#homelab">--homelab</a>]<span id="manual-controls" hidden>
+        <div><b>genedupre</b> [<a href="#work">--work</a>] [<a href="#homelab">--homelab</a>] [<a href="#open-source">--open-source</a>]<span id="manual-controls" hidden>
             <span class="manual-option">[<button type="button" id="theme-toggle">--theme=light</button>]</span>
             <span class="manual-option">[<button type="button" id="expand-toggle" aria-controls="work">--expand</button>]</span>
             <span class="manual-option wide-option">[<button type="button" id="layout-toggle" aria-pressed="false">--wide</button>]</span>
@@ -126,6 +126,7 @@
                 <h2>--homelab <a class="permalink" href="#homelab" aria-label="Permalink to homelab" title="Permalink to homelab">#</a></h2>
                 <p>I run several Proxmox hosts for my personal services. I use Terraform to deploy LXC containers and virtual machines on the cluster, and Ansible to deploy and configure the services. An ELK stack, Telegraf and Grafana handle logs and monitoring. I also run Home Assistant and a small Kubernetes setup. Early this year, I implemented certificate lifecycle automation with HashiCorp Vault. This replaced the long-lived static certificates I was using before and brought certificate management into my existing Ansible setup.</p>
             </div>
+
         </section>
 
         <div class="manual-reference">
@@ -147,6 +148,41 @@
                         <p>I built a Nomad test environment and explored how it compared with Kubernetes, including deployment through GitLab CI/CD and integration with HashiCorp Vault.</p>
                     </section>
                     <p>2019: <a href="https://www.howest.be/nl/opleidingen/graduaat/systeem-en-netwerkbeheer">Associate Degree in Network Infrastructure</a>, Howest.</p>
+                </div>
+            </section>
+
+            <section id="open-source">
+                <h1>OPEN SOURCE <a class="permalink" href="#open-source" aria-label="Permalink to open-source" title="Permalink to open-source">#</a></h1>
+
+                <div>
+                    <p>I built a set of plugins for <a href="https://fooyin.org/">fooyin</a>, an open-source music player. These fill gaps I missed coming from MusicBee, and work on both Linux and Windows.</p>
+
+                    <details id="fooyin-managed-library" open>
+                        <summary>
+                            <span class="work-position"><a href="https://github.com/genedupre/fooyin-managed-library">fooyin-managed-library</a> <a class="permalink" href="#fooyin-managed-library" aria-label="Permalink to fooyin-managed-library" title="Permalink to fooyin-managed-library">#</a></span>
+                        </summary>
+                        <div>
+                            <p>A plugin that automatically organizes music files on disk when tags change. Hooks into fooyin's MusicLibrary event system and AudioLoader for real-time tag detection, with background file operations and crash recovery via a journaled write-ahead log.</p>
+                        </div>
+                    </details>
+
+                    <details id="fooyin-renumber-tracks">
+                        <summary>
+                            <span class="work-position"><a href="https://github.com/genedupre/fooyin-renumber-tracks">fooyin-renumber-tracks</a> <a class="permalink" href="#fooyin-renumber-tracks" aria-label="Permalink to fooyin-renumber-tracks" title="Permalink to fooyin-renumber-tracks">#</a></span>
+                        </summary>
+                        <div>
+                            <p>Adds a drag-drop renumber dialog to fooyin's context menu. Tracks are grouped by disc, each renumbering independently. Tracks can be moved between discs to reassign them.</p>
+                        </div>
+                    </details>
+
+                    <details id="fooyin-copy-paste-artwork">
+                        <summary>
+                            <span class="work-position"><a href="https://github.com/genedupre/fooyin-copy-paste-artwork">fooyin-copy-paste-artwork</a> <a class="permalink" href="#fooyin-copy-paste-artwork" aria-label="Permalink to fooyin-copy-paste-artwork" title="Permalink to fooyin-copy-paste-artwork">#</a></span>
+                        </summary>
+                        <div>
+                            <p>Copy embedded cover artwork from one track and paste it onto others. Uses fooyin's AudioLoader to read covers and the writeTrackCovers API to write them back.</p>
+                        </div>
+                    </details>
                 </div>
             </section>
 
